@@ -8,8 +8,8 @@ import { BottomTabBar } from 'react-navigation-tabs'
 
 import TabsCenter from './TabCenter'
 
-
-export default class DynamicTabNavigator extends Component<props> {
+type Props = {}
+export default class DynamicTabNavigator extends Component<Props> {
     constructor(props) {
         super(props)
         console.disableYellowBox = true
@@ -38,7 +38,7 @@ export default class DynamicTabNavigator extends Component<props> {
     }
 }
 
-class TabBarComponent extends React.Component {
+class TabBarComponent extends React.Component<Props> {
     constructor(props) {
         super(props)
         this.theme = {

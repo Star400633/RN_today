@@ -2,7 +2,6 @@
  * 主页面
  */
 import React, { Component } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
 import DynamicTabNavigator from '../navigator/DynamicTabNavigator'
 import NavigationUtils from "../navigator/NavigationUtils"
 
@@ -14,7 +13,7 @@ export default class HomePage extends Component<Props> {
     render() {
         NavigationUtils.navigation = this.props.navigation
         return (
-                <DynamicTabNavigator />
+            <DynamicTabNavigator/>
         )
     }
 }

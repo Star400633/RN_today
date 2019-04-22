@@ -1,11 +1,24 @@
 
 import React, { Component } from 'react'
-import { Platform, StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
+import { connect } from 'react-redux'
+import actions from '../actions/index'
 
 type Props = {}
-export default class TodayPage extends Component<Props> {
+class TodayPage extends Component<Props> {
+    constructor(props) {
+        super(props)
+        console.disableYellowBox = true
+    }
+    
+    componentDidMount() {
+        const { getToday } = this.props
+        getToday()
+    }
     
     render() {
+        const haha = this.props
+        console.log('haha', haha)
         return (
             <View style={styles.container}>
                 <Text style={styles.welcome}>TodayPage</Text>
@@ -14,6 +27,15 @@ export default class TodayPage extends Component<Props> {
     }
 }
 
+const mapStatetoProps = state => ({
+    today: state.today
+})
+
+const mapDispatchtoProps = dispatch => ({
+    getToday: () => dispatch(actions.getTodayData())
+})
+
+export default connect(mapStatetoProps, mapDispatchtoProps)(TodayPage)
 const styles = StyleSheet.create({
     container: {
         flex: 1,

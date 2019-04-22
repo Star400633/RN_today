@@ -6,6 +6,7 @@ axios.interceptors.request.use((options={}) => {
     let { params } = options
     const { url, type, data, contentType='application/x-www-form-urlencoded', withCredentials=true, headers } = options
     params = {
+        ...params,
         t: new Date().getTime()
     }
     
@@ -36,6 +37,7 @@ axios.interceptors.request.use((options={}) => {
             config.data = JSON.stringify(data)
         }
     }
+    debugger
     return config
 }, err => {
     return Promise.reject(err)
@@ -50,3 +52,5 @@ axios.interceptors.response.use((res) => {
 }, err => {
     return Promise.reject(err)
 })
+
+export default axios
