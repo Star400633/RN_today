@@ -37,14 +37,15 @@ axios.interceptors.request.use((options={}) => {
             config.data = JSON.stringify(data)
         }
     }
-    debugger
     return config
 }, err => {
+    console.log('req err', err)
     return Promise.reject(err)
 })
 
 // 相应拦截
 axios.interceptors.response.use((res) => {
+    console.log('res err', res)
     if(res.status === 200) {
         return JSON.parse(res.data)
     }

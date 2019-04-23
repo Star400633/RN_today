@@ -16,9 +16,6 @@ export default class WelcomePage extends Component<Props> {
         this.timer && clearTimeout(this.timer)
     }
     render() {
-        if(1===4) {
-            return true
-        }
         return (
             <View style={styles.container}>
                 <Text style={styles.welcome}>Welcome Page</Text>

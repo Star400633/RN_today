@@ -15,7 +15,7 @@ const logger = store => next => action => {
         console.log('diapatch', action)
     }
     const result = next(action)
-    console.log('nextState', store.getState())
+    // console.log('nextState', store.getState())
     return result
 }
 

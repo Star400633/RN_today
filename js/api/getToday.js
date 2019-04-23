@@ -1,15 +1,14 @@
 import Axios from '../utils/Axios'
-import config from './config'
+import Config from './config'
+
 /**
  * 获取今日信息
  * @param options
  * @returns {*}
  */
 export function getToday(options = {}) {
-    const { name, type, path, } = config.GET_TODAY_DATA
-    
-    options.url = path
-    options.type = type
+    const { name, type, path, } = Config.GET_TODAY_DATA
+    options.method = type
 
-    return Axios(options)
+    return fetch(path, options)
 }

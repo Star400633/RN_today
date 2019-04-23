@@ -4,11 +4,10 @@ const defaultState = {}
 export default function Today(state=defaultState, action) {
     switch(action.type) {
         case ActionType.SET_TODAY_DATA:
-            const { data } = action
+            const { payload } = action
             return {
                 ...state,
-                newData: new Date().getTime(),
-                num: data
+                list: payload
             }
         default:
             return state

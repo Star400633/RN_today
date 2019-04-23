@@ -1,11 +1,11 @@
 
-import React, { Component } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React from 'react'
+import { FlatList, Text, View, StyleSheet, RefreshControl, } from 'react-native'
 import { connect } from 'react-redux'
 import actions from '../actions/index'
 
 type Props = {}
-class TodayPage extends Component<Props> {
+class TodayPage extends React.PureComponent<Props> {
     constructor(props) {
         super(props)
         console.disableYellowBox = true
@@ -17,11 +17,17 @@ class TodayPage extends Component<Props> {
     }
     
     render() {
-        const haha = this.props
-        console.log('haha', haha)
+        const { today={} } = this.props
+        const { list=[] } = today
+        console.log('list', list)
         return (
             <View style={styles.container}>
-                <Text style={styles.welcome}>TodayPage</Text>
+                <FlatList data={list}
+                          style={styles.welcome}
+                          keyExtractor={item => item.id}
+                          renderItem={({item, index}) => (<Text key={index} style={styles.item}>{ item.title }</Text>)}
+                          refreshControl={<RefreshControl title='正在加载~' titleColor={'red'}/>}
+                ></FlatList>
             </View>
         )
     }
@@ -46,6 +52,11 @@ const styles = StyleSheet.create({
     welcome: {
         fontSize: 20,
         textAlign: 'center',
-        margin: 10,
+        marginTop: 40,
+    },
+    item: {
+        width: '100%',
+        height: 80,
+        padding: 10,
     },
 });
